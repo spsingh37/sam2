@@ -27,14 +27,29 @@
 - The training (and fine-tuning) code has been released. See [`training/README.md`](training/README.md) on how to get started.
 - The frontend + backend code for the SAM 2 web demo has been released. See [`demo/README.md`](demo/README.md) for details.
 
-## Installation
+## Installation...updated for Cuda 11.8 and Pytorch 2.1.0
 
-SAM 2 needs to be installed first before use. The code requires `python>=3.10`, as well as `torch>=2.5.1` and `torchvision>=0.20.1`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) to install both PyTorch and TorchVision dependencies. You can install SAM 2 on a GPU machine using:
+SAM 2 needs to be installed first before use. The code requires `python==3.10.16`, as well as `torch==2.1.0` and `torchvision==0.16.0`. Please follow the following instructions to install both PyTorch and TorchVision dependencies. You can install SAM 2 on a GPU machine using:
 
 ```bash
 git clone https://github.com/facebookresearch/sam2.git && cd sam2
 
+conda env create -n sam2 python==3.10.16
+```
+
+If you already have CUDA 11.8, then please skip the next step:
+
+```bash
+conda install -c nvidia/label/cuda-11.8.0 cuda-toolkit
+```
+
+Now install the rest of the dependencies:
+
+```bash
+
 pip install -e .
+
+conda install pytorch==2.1.0 torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia -y
 ```
 If you are installing on Windows, it's strongly recommended to use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) with Ubuntu.
 
